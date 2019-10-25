@@ -17,14 +17,27 @@ const NotFound = { template: `<div>not found!</div>` }
 
 const routeTable = {
   // Implement this!
+  'foo': Foo,
+  'bar': Bar
 }
 
 window.addEventListener('hashchange', () => {
   // Implement this!
+  app.url = window.location.hash.slice(1);
 })
 
 const app = new Vue({
   el: '#app',
   // Implement this!
+  data: {
+    url: window.location.hash.slice(1)
+  },
+  render(h) {
+    return h('div', [
+      h(routeTable[this.url] || NotFound),
+      h('a', { attrs: { href: '#foo' }}, 'foo'),
+      h('a', { attrs: { href: '#bar' }}, 'bar') 
+    ])
+  }
 })
 </script>

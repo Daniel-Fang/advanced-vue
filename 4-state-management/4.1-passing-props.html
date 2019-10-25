@@ -14,5 +14,13 @@
 new Vue({
   el: '#app',
   // Implement this!
+  components: {
+    Counter: {
+      props: ['count'],
+      template: `<div>{{ count }}</div>`
+    }
+  },
+  data: {count: 0} //传递props
 })
+// 在根组件包含state，所有子组件共享
 </script>
